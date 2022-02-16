@@ -1,0 +1,173 @@
+.global {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.delimetr-to-width {
+    max-width: 100%;
+    margin: 4px;
+}
+
+.delimetr-to-height {
+    max-height: 100%;
+    margin: 4px;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8px;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.header-button-deselected {
+    width: -webkit-fill-available;
+    max-width: 200px;
+    margin: 4px;
+    padding: 4px 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: grey;
+}
+
+.header-button-deselected:hover {
+    background-color: antiquewhite;
+}
+
+.header-button-selected {
+    width: -webkit-fill-available;
+    max-width: 200px;
+    margin: 4px;
+    padding: 4px 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: aquamarine;
+}
+
+.header-button-selected:hover {
+    background-color: aquamarine;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.info-container {
+    max-height: 600px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    flex: 5;
+    margin: 8px;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.info-head-element {
+    margin: 8px 16px;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.info-list-element {
+    margin: 4px;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.control-container {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.tools-container {
+    margin: 8px 8px 4px 8px;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.tools-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tools-button {
+    width: 40px;
+    height: 40px;
+    margin: 0 4px;
+    padding: 0;
+}
+
+.icon {
+    width: 10px;
+    height: 10px;
+    margin: auto;
+}
+
+.scroll-container {
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin: 4px 8px 8px 8px;
+    padding: 8px;
+    border: 1px solid black;
+}
+
+.scroll-element {
+    margin: 2px 4px;
+    padding: 4px;
+    border: 1px solid black;
+}
+
+.scroll-element:hover {
+    background-color: bisque;
+}
+
+
+.tools-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.tools-form-header {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 8px;
+}
+
+input {
+    min-width: 96px;
+    max-width: 120px;
+}
+
+select {
+    min-width: 96px;
+    max-width: 120px;
+    height: 22px;
+}
+
+.tools-form-pair {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 4px 0;
+}
+
+.tools-form-request {
+    text-align: justify;
+    vertical-align: middle;
+    min-height: 56px;
+}
+
+.tools-form-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 8px;
+}

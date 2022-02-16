@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>C&S Project</title>
+        <script src="./Lib/ReactFramework/react.development.js"></script>
+        <script src="./Lib/ReactFramework/react-dom.development.js"></script>
+        <script src="./Lib/ReactFramework/babel.min.js"></script>
+        <script type="text/javascript" src="./Data/mainData.js"></script>
+        <script type="text/babel" src="./Model/List/studentList.js"></script>
+        <script type="text/babel" src="./Model/List/companyList.js"></script>
+        <script type="text/babel" src="./Model/List/eventList.js"></script>
+        <script type="text/babel" src="./Model/Form/addForm.js"></script>
+        <script type="text/babel" src="./Model/Form/deleteForm.js"></script>
+        <script type="text/babel" src="./Model/Panel/navigationPanel.js"></script>
+        <script type="text/babel" src="./Model/Panel/toolsPanel.js"></script>
+        <script type="text/babel" src="./Model/Panel/controlPanel.js"></script>
+        <script type="text/babel" src="./Model/Panel/infoPanel.js"></script>
+        <script type="text/babel" src="./Model/app.js"></script>
+        <link rel="stylesheet" href="./Styles/main.css">
+        <link rel="stylesheet" href="./Lib/font-awesome/css/font-awesome.css">
+    </head>
+
+    <body>
+        <div class="global" id="root"></div>
+    </body>
+
+    <script type="text/babel">
+        ReactDOM.render(
+          <App />,
+          document.getElementById("root")
+        )
+    </script>
+</html>
