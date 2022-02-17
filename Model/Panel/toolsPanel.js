@@ -16,7 +16,7 @@ class ToolsPanel extends React.Component {
             return <div className='tools-buttons-container'>
                         <button className='tools-button' onClick={() => this.changeForm('ADD')}><i className='fa fa-plus-circle icon'/></button>
                         <button className='tools-button' onClick={() => this.changeForm('DEL')}><i className='fa fa-minus-circle icon'/></button>
-                        <button className='tools-button' onClick={() => this.changeForm('NIL')}><i className='fa fa-refresh icon'/></button>
+                        <button className='tools-button' onClick={() => this.changeForm('EDT')}><i className='fa fa-refresh icon'/></button>
                         <button className='tools-button' onClick={() => this.changeForm('NIL')}><i className='fa fa-arrow-right icon'/></button>
                     </div>
         }
@@ -26,13 +26,14 @@ class ToolsPanel extends React.Component {
     renderForm(form) {
         this.showButtons = false;
         switch (form) {
-            case 'ADD': return <AddForm cancelHandler={() => this.changeForm('NIL')}/>
+            case 'ADD': return <AddForm  category={this.props.category}
+                                    addHandler={this.props.onAddHandler} cancelHandler={() => this.changeForm('NIL')}/>
             case 'DEL': {
                 let has = false;
                 switch (this.props.category) {
-                    case 'ST': has = DataStudents.filter(s => s.id == this.props.selectedElement.student).length == 1; break;
-                    case 'CO': has = DataCompanies.filter(c => c.id == this.props.selectedElement.company).length == 1; break;
-                    case 'EV': has = DataEvents.filter(e => e.id == this.props.selectedElement.event).length == 1; break;
+                    case 'ST': has = getStudentById(this.props.selectedElement.student) != null; break;
+                    case 'CO': has = getCompanyById(this.props.selectedElement.company) != null; break;
+                    case 'EV': has = getEventById(this.props.selectedElement.event) != null; break;
                     case 'DT': return
                 }
                 if (has)
@@ -41,9 +42,25 @@ class ToolsPanel extends React.Component {
                 else {
                     this.state.form = 'NIL';
                     this.showButtons = true;
-                }
-                    
+                }  
             }
+            case 'EDT': {
+                let has = false;
+                switch (this.props.category) {
+                    case 'ST': has = getStudentById(this.props.selectedElement.student) != null; break;
+                    case 'CO': has = getCompanyById(this.props.selectedElement.company) != null; break;
+                    case 'EV': has = getEventById(this.props.selectedElement.event) != null; break;
+                    case 'DT': return
+                }
+                if (has)
+                    return <EditForm category={this.props.category} selectedElement={this.props.selectedElement}
+                                    editHandler={this.props.onEditHandler} cancelHandler={() => this.changeForm('NIL')}/>
+                else {
+                    this.state.form = 'NIL';
+                    this.showButtons = true;
+                }  
+            }
+            
             default: this.showButtons = true;
         }
     }

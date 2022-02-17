@@ -13,9 +13,9 @@ class App extends React.Component {
         this.state = {
             category: 'ST',
             selectedElement: {
-                student: -1,
-                company: -1, 
-                event: -1
+                student: null,
+                company: null, 
+                event: null
             }
         }
     };
@@ -36,20 +36,64 @@ class App extends React.Component {
         this.setState(this.state);
     };
 
+    onAddElement = () => {
+        //console.log('onAddElement');
+        switch (this.state.category) {
+            case 'ST': 
+                let sname = document.getElementById('studentName').value;
+                let spec = document.getElementById('studentSpec').value;
+                let syear = document.getElementById('studentSYear').value;
+                let group = document.getElementById('studentGroup').value;
+                addStudent(sname, spec, group, syear);
+                break;
+            case 'CO': 
+                let cname = document.getElementById('companyName').value;
+                addCompany(cname);
+                break;
+            case 'EV': 
+                
+                break;
+            case 'DT': return
+        }
+        this.setState(this.state);
+    }
+
     onDeleteElement = () => {
         //console.log('onDeleteElement');
         switch (this.state.category) {
             case 'ST': 
-                DataStudents = DataStudents.filter(s => s.id != this.state.selectedElement.student);
-                this.state.selectedElement.student = -1; 
+                deleteStudentById(this.state.selectedElement.student);
+                this.state.selectedElement.student = null; 
                 break;
             case 'CO': 
-                DataCompanies = DataCompanies.filter(c => c.id != this.state.selectedElement.company);
-                this.state.selectedElement.company = -1;
+                deleteCompanyById(this.state.selectedElement.company);
+                this.state.selectedElement.company = null;
                 break;
             case 'EV': 
-                DataEvents = DataEvents.filter(e => e.id != this.state.selectedElement.event);
-                this.state.selectedElement.event = -1;
+                deleteEventById(this.state.selectedElement.event);
+                this.state.selectedElement.event = null;
+                break;
+            case 'DT': return
+        }
+        this.setState(this.state);
+    }
+
+    onEditElement = () => {
+        //console.log('onAddElement');
+        switch (this.state.category) {
+            case 'ST': 
+                let sname = document.getElementById('studentName').value;
+                let spec = document.getElementById('studentSpec').value;
+                let syear = document.getElementById('studentSYear').value;
+                let group = document.getElementById('studentGroup').value;
+                updateStudentById(this.state.selectedElement.student, sname, spec, group, syear);
+                break;
+            case 'CO': 
+                let cname = document.getElementById('companyName').value;
+                updateCompanyById(this.state.selectedElement.company, cname);
+                break;
+            case 'EV': 
+                
                 break;
             case 'DT': return
         }
@@ -61,7 +105,8 @@ class App extends React.Component {
                     <NavigationPanel category={this.state.category} onClickHandler={this.onNavigationSelected}/>
                     <div className='main-container'>
                         <ControlPanel category={this.state.category} selectedElement={this.state.selectedElement} 
-                            onDeleteHandler={this.onDeleteElement} onClickHandler={this.onListElementSelected}/>
+                            onAddHandler={this.onAddElement} onDeleteHandler={this.onDeleteElement}
+                            onEditHandler={this.onEditElement} onClickHandler={this.onListElementSelected}/>
                         <InfoPanel category={this.state.category} selectedElement={this.state.selectedElement}/>
                     </div>
                 </div>

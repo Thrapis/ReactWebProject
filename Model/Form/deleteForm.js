@@ -4,36 +4,37 @@ class DeleteForm extends React.Component {
     constructor(props) {
         super(props);
     }
-    
-    render() {
+
+    prerender() {
         this.hasInfo = false;
         switch (this.props.category) {
             case 'ST': 
-                let students = DataStudents.filter(s => s.id == this.props.selectedElement.student);
-                if (students.length == 1) {
-                    let student = students[0];
-                    this.hasInfo = true;
-                    this.headInfo = `${student['name']}, ${student['spec']}-${student['syear']}-${student['group']}`
-                }
+            let student = getStudentById(this.props.selectedElement.student);
+            if (student != null) {
+                this.hasInfo = true;
+                this.headInfo = `${student['name']}, ${student['spec']}-${student['syear']}-${student['group']}`;
+            }
                 break;
             case 'CO':
-                let companies = DataCompanies.filter(c => c.id == this.props.selectedElement.company);
-                if (companies.length == 1) {
-                    let company = companies[0];
+                let company = getCompanyById(this.props.selectedElement.company);
+                if (company != null) {
                     this.hasInfo = true;
-                    this.headInfo = `${company['name']}`
+                    this.headInfo = `${company['name']}`;
                 }
                 break;
             case 'EV':
-                let events = DataEvents.filter(e => e.id == this.props.selectedElement.event);
-                if (events.length == 1) {
-                    let event = events[0];
+                let event = getEventById(this.props.selectedElement.event);
+                if (event != null) {
                     this.hasInfo = true;
-                    this.headInfo = `${event['text']}`
+                    this.headInfo = `${event['text']}`;
                 }
                 break;
             case 'DT': break;
         }
+    }
+    
+    render() {
+        {this.prerender()}
 
         return <form className='tools-form'>
                     <span className='tools-form-header'>Delete</span>
