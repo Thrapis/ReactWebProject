@@ -88,6 +88,7 @@
     margin: 8px 8px 4px 8px;
     padding: 8px;
     border: 1px solid black;
+    max-width: 266px;
 }
 
 .tools-buttons-container {
@@ -119,6 +120,25 @@
     border: 1px solid black;
 }
 
+.scroll-sort-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 6px 4px;
+    position:sticky;
+    top: -8px;
+    background-color: white;
+}
+
+.scroll-sort-label {
+    align-self: center;
+}
+
+.scroll-sort-select {
+    width: 76px;
+}
+
+
 .scroll-element {
     margin: 2px 4px;
     padding: 4px;
@@ -142,13 +162,14 @@
 }
 
 input {
-    min-width: 96px;
+    min-width: fit-content;
     max-width: 120px;
 }
 
 select {
-    min-width: 96px;
-    max-width: 120px;
+    min-width: fit-content;
+    max-width: 170px;
+    width: -webkit-fill-available;
     height: 22px;
 }
 
@@ -160,7 +181,7 @@ select {
 }
 
 .tools-form-request {
-    text-align: justify;
+    text-align: center;
     vertical-align: middle;
     min-height: 56px;
 }

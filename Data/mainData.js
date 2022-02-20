@@ -1,6 +1,10 @@
 //.map(sName => {return {name: sName}});
 const DataSpecs = ['ИСиТ', 'ПОИТ', 'ПОИБМС', 'ДЭВИ']
 
+const StudentSorts = ['id', 'name', 'spec', 'group', 'syear']
+
+const EventSorts = ['id', 'date', 'text']
+
 let DataStudents = [
 	{id:1,	name:'Петров П.П.', 	 spec:'ИСиТ', 	 group:1,	syear:2016}, 
 	{id:2,	name:'Иванов И.И.',		 spec:'ИСиТ',    group:1,	syear:2016}, 

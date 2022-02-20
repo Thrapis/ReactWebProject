@@ -4,13 +4,7 @@ class EditForm extends React.Component {
     constructor(props) {
         super(props);
     }
-
-    renderSpecs() {
-        for (let spec in DataSpecs) {
-            return <option value={spec}>{spec}</option>
-        }
-    }
-
+    
     studentForm() {
         let editStudent = getStudentById(this.props.selectedElement.student);
         return <form className='tools-form' id='editForm'>

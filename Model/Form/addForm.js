@@ -5,13 +5,6 @@ class AddForm extends React.Component {
         super(props);
     }
 
-    renderSpecs() {
-        for (let spec in DataSpecs) {
-            console.log(spec);
-            return <option value={spec}>{spec}</option>
-        }
-    }
-
     studentForm() {
         return <form className='tools-form' id='addForm'>
                     <span className='tools-form-header'>Add</span>
