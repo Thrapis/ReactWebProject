@@ -34,11 +34,13 @@ class InfoPanel extends React.Component {
                 }
                 break;
             case 'EV':
-                let events = DataEvents.filter(e => e.id == this.props.selectedElement.event);
-                if (events.length == 1) {
-                    let event = events[0];
+                let extendedEvent = getExtendedEvent(getEventById(this.props.selectedElement.event));
+                if (extendedEvent != null) {
                     this.hasInfo = true;
-                    this.headInfo = `${event['text']}`
+                    this.headInfo = `${extendedEvent.event['text']}, ${extendedEvent.event['date']} -
+                     ${extendedEvent.company != null ? extendedEvent.company['name'] : 'No company'} -
+                      ${extendedEvent.student != null ? extendedEvent.student['name'] : 'No student'}`
+                    this.detailsList = [];
                 }
                 break;
             case 'DT': break;

@@ -9,11 +9,11 @@ class DeleteForm extends React.Component {
         this.hasInfo = false;
         switch (this.props.category) {
             case 'ST': 
-            let student = getStudentById(this.props.selectedElement.student);
-            if (student != null) {
-                this.hasInfo = true;
-                this.headInfo = `${student['name']}, ${student['spec']}-${student['syear']}-${student['group']}`;
-            }
+                let student = getStudentById(this.props.selectedElement.student);
+                if (student != null) {
+                    this.hasInfo = true;
+                    this.headInfo = `${student['name']}, ${student['spec']}-${student['syear']}-${student['group']}`;
+                }
                 break;
             case 'CO':
                 let company = getCompanyById(this.props.selectedElement.company);

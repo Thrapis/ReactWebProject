@@ -15,9 +15,9 @@ class AddForm extends React.Component {
                     <div className='tools-form-pair'>
                         <label htmlFor='studentSpec'>Spec</label>
                         <select id="studentSpec" name="studentSpec">
-                                {DataSpecs.map((spec, i)  => {
-                                    return <option value={spec} key={i}>{spec}</option>
-                                })}
+                            {DataSpecs.map((spec, i)  => {
+                                return <option value={spec} key={i}>{spec}</option>
+                            })}
                         </select>
                     </div>
                     <div className='tools-form-pair'>
@@ -29,7 +29,7 @@ class AddForm extends React.Component {
                         <input type='number' id='studentGroup' defaultValue='1'/>
                     </div>
                     <div className='tools-form-control'>
-                        <input type='button' value='Submit' onClick={this.props.addHandler}/>
+                        <input type='button' value='Submit' onClick={(event) => { this.props.addHandler(event); this.props.cancelHandler();}}/>
                         <input type='button' value='Cancel' onClick={this.props.cancelHandler}/>
                     </div>
                 </form>
@@ -43,7 +43,48 @@ class AddForm extends React.Component {
                         <input type='text' id='companyName' placeholder='Megacorp Inc.'/>
                     </div>
                     <div className='tools-form-control'>
-                        <input type='button' value='Submit' onClick={this.props.addHandler}/>
+                        <input type='button' value='Submit' onClick={(event) => { this.props.addHandler(event); this.props.cancelHandler();}}/>
+                        <input type='button' value='Cancel' onClick={this.props.cancelHandler}/>
+                    </div>
+                </form>
+    }
+
+    eventForm() {
+        const date = new Date();
+        const futureDate = date.getDate() + 1;
+        date.setDate(futureDate);
+        const defaultValue = date.toLocaleDateString('en-CA');
+
+        return <form className='tools-form' id='addForm'>
+                    <span className='tools-form-header'>Add</span>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='eventDate'>Date</label>
+                        <input type="date" id='eventDate' defaultValue={defaultValue}/>
+                    </div>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='eventText'>Text</label>
+                        <input type='text' id='eventText' placeholder='Work'/>
+                    </div>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='companyId'>Company</label>
+                        <select id="companyId" name="companyId">
+                            <option value={null} key={-1}>No company</option>
+                            {DataCompanies.map((company, i)  => {
+                                return <option value={company.id} key={i}>{company.name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='studentId'>Student</label>
+                        <select id="studentId" name="studentId">
+                            <option value={null} key={-1}>No student</option>
+                            {DataStudents.map((student, i)  => {
+                                return <option value={student.id} key={i}>{student.name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className='tools-form-control'>
+                        <input type='button' value='Submit' onClick={(event) => { this.props.addHandler(event); this.props.cancelHandler();}}/>
                         <input type='button' value='Cancel' onClick={this.props.cancelHandler}/>
                     </div>
                 </form>
@@ -53,7 +94,7 @@ class AddForm extends React.Component {
         switch (this.props.category) {
             case 'ST': return this.studentForm()
             case 'CO': return this.companyForm()
-            case 'EV': this.props.selectedElement.event = value; break;
+            case 'EV': return this.eventForm()
             case 'DT': break;
         }
         

@@ -36,8 +36,8 @@ class EventList extends React.Component {
                         </select>
                     </div>
                     {DataEvents.map((event, i)  => { 
-                        let dis = this.props.selectedElement.event == event.id;
-                        return <button disabled={dis} className="scroll-element" data={event['id']} key={i} onClick={this.props.onClickHandler}>
+                        let selected = this.props.selectedElement.event == event.id;
+                        return <button className={selected ? 'scroll-element-selected' : 'scroll-element'} data={event['id']} key={i} onClick={this.props.onClickHandler}>
                                 {`${event['text']} | ${event['date']}`}
                             </button>
                     })}

@@ -35,8 +35,9 @@ class CompanyList extends React.Component {
                         </select>
                     </div>
                     {DataCompanies.map((company, i)  => { 
-                        let dis = this.props.selectedElement.company == company.id;
-                        return <button disabled={dis} className="scroll-element" data={company['id']} key={i} onClick={this.props.onClickHandler}>
+                        let selected = this.props.selectedElement.company == company.id;
+                        return <button className={selected ? 'scroll-element-selected' : 'scroll-element'}
+                                     data={company['id']} key={i} onClick={this.props.onClickHandler}>
                                 {company['name']}
                             </button>
                     })}

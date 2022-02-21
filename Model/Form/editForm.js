@@ -58,12 +58,62 @@ class EditForm extends React.Component {
                     </div>
                 </form>
     }
+
+    eventForm() {
+        let editEvent = getEventById(this.props.selectedElement.event);
+        let extendedEditEvent = getExtendedEvent(editEvent);
+
+        const date = new Date(editEvent.date);
+        const futureDate = date.getDate() + 1;
+        date.setDate(futureDate);
+        const defaultValue = date.toLocaleDateString('en-CA');
+
+        return <form className='tools-form' id='editForm'>
+                    <span className='tools-form-header'>Edit</span>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='eventId'>Id</label>
+                        <input type='text' id='eventId' key={editEvent.id} defaultValue={editEvent.id} readOnly disabled={true}/>
+                    </div>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='eventDate'>Date</label>
+                        <input type="date" id='eventDate' key={editEvent.id} defaultValue={defaultValue}/>
+                    </div>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='eventText'>Text</label>
+                        <input type='text' id='eventText' key={editEvent.id} placeholder='Work' defaultValue={editEvent.text}/>
+                    </div>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='companyId'>Company</label>
+                        <select id="companyId" name="companyId" key={editEvent.id} 
+                                defaultValue={extendedEditEvent.company != null ? extendedEditEvent.company.id : null}>
+                            <option value={null} key={-1}>No company</option>
+                            {DataCompanies.map((company, i)  => {
+                                return <option value={company.id} key={i}>{company.name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className='tools-form-pair'>
+                        <label htmlFor='studentId'>Student</label>
+                        <select id="studentId" name="studentId" key={editEvent.id}
+                                defaultValue={extendedEditEvent.student != null ? extendedEditEvent.student.id : null}>
+                            <option value={null} key={-1}>No student</option>
+                            {DataStudents.map((student, i)  => {
+                                return <option value={student.id} key={i}>{student.name}</option>
+                            })}
+                        </select>
+                    </div>
+                    <div className='tools-form-control'>
+                        <input type='button' value='Submit' onClick={(event) => { this.props.editHandler(event); this.props.cancelHandler();}}/>
+                        <input type='button' value='Cancel' onClick={this.props.cancelHandler}/>
+                    </div>
+                </form>
+    }
     
     render() {
         switch (this.props.category) {
-            case 'ST': return this.studentForm();
+            case 'ST': return this.studentForm()
             case 'CO': return this.companyForm()
-            case 'EV': return
+            case 'EV': return this.eventForm()
             case 'DT': return
         }
         

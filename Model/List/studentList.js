@@ -38,8 +38,9 @@ class StudentList extends React.Component {
                         </select>
                     </div>
                     {this.data.map((student, i)  => { 
-                        let dis = this.props.selectedElement.student == student.id;
-                        return <button disabled={dis} className="scroll-element" data={student['id']} key={i} onClick={this.props.onClickHandler}>
+                        let selected = this.props.selectedElement.student == student.id;
+                        return <button className={selected ? 'scroll-element-selected' : 'scroll-element'} 
+                                    data={student['id']} key={i} onClick={this.props.onClickHandler}>
                                 {student['id']} - {student['name']}
                             </button>
                     })}

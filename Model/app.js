@@ -28,9 +28,15 @@ class App extends React.Component {
     onListElementSelected = () => {
         let value = event.target.attributes.getNamedItem('data').value;
         switch (this.state.category) {
-            case 'ST': this.state.selectedElement.student = value; break;
-            case 'CO': this.state.selectedElement.company = value; break;
-            case 'EV': this.state.selectedElement.event = value; break;
+            case 'ST': 
+                this.state.selectedElement.student = (value == this.state.selectedElement.student ? null : value);
+                break;
+            case 'CO': 
+                this.state.selectedElement.company = (value == this.state.selectedElement.company ? null : value);
+                break;
+            case 'EV':
+                this.state.selectedElement.event = (value == this.state.selectedElement.event ? null : value);
+                break;
             case 'DT': break;
         }
         this.setState(this.state);
@@ -51,7 +57,11 @@ class App extends React.Component {
                 addCompany(cname);
                 break;
             case 'EV': 
-                
+                let date = document.getElementById('eventDate').value;
+                let text = document.getElementById('eventText').value;
+                let studentId = document.getElementById('studentId').value;
+                let companyId = document.getElementById('companyId').value;
+                addEvent(date, text, companyId, studentId);
                 break;
             case 'DT': return
         }
@@ -98,7 +108,11 @@ class App extends React.Component {
                 updateCompanyById(this.state.selectedElement.company, cname);
                 break;
             case 'EV': 
-                
+                let date = document.getElementById('eventDate').value;
+                let text = document.getElementById('eventText').value;
+                let studentId = document.getElementById('studentId').value;
+                let companyId = document.getElementById('companyId').value;
+                updateEventById(this.state.selectedElement.event, date, text, companyId, studentId);
                 break;
             case 'DT': return
         }
