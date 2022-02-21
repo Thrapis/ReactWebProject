@@ -15,3 +15,13 @@ function deleteCompanyById(id) {
 function deleteEventById(id) {
     DataEvents = DataEvents.filter(e => e.id != id);
 }
+
+//---Massive delete---
+
+function deleteEventsAffiliatedWithStudentById(id) {
+    DataEvents = DataEvents.filter(e => e.studentId != id);
+}
+
+function deleteEventsAffiliatedWithCompanyById(id) {
+    DataEvents = DataEvents.filter(e => e.companyId != id);
+}

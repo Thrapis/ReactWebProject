@@ -3,7 +3,7 @@ const REGIM = {
     ST: 'Students',
     CO: 'Companies',
     EV: 'Events',
-    DT: 'Dicts'
+    //DT: 'Dicts'
 }
 
 class App extends React.Component {
@@ -60,12 +60,17 @@ class App extends React.Component {
 
     onDeleteElement = () => {
         //console.log('onDeleteElement');
+        let deleteEvents = false;
         switch (this.state.category) {
-            case 'ST': 
+            case 'ST':
+                deleteEvents = confirm("Do you want to delete events affilated with this student?");
+                if (deleteEvents) deleteEventsAffiliatedWithStudentById(this.state.selectedElement.student);
                 deleteStudentById(this.state.selectedElement.student);
                 this.state.selectedElement.student = null; 
                 break;
             case 'CO': 
+                deleteEvents = confirm("Do you want to delete events affilated with this company?");
+                if (deleteEvents) deleteEventsAffiliatedWithCompanyById(this.state.selectedElement.company);
                 deleteCompanyById(this.state.selectedElement.company);
                 this.state.selectedElement.company = null;
                 break;

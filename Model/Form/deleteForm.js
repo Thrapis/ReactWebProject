@@ -39,7 +39,7 @@ class DeleteForm extends React.Component {
         return <form className='tools-form'>
                     <span className='tools-form-header'>Delete</span>
                     <div className='tools-form-pair'>
-                        <span className='tools-form-request'>I you shure you want to delete "{this.headInfo}"?</span>
+                        <span className='tools-form-request'>Are you shure you want to delete "{this.headInfo}"?</span>
                     </div>
                     <div className='tools-form-control'>
                         <input type='button' value='Submit' onClick={this.props.deleteHandler}/>

@@ -3,6 +3,8 @@ const DataSpecs = ['ИСиТ', 'ПОИТ', 'ПОИБМС', 'ДЭВИ']
 
 const StudentSorts = ['id', 'name', 'spec', 'group', 'syear']
 
+const CompanySorts = ['id', 'name']
+
 const EventSorts = ['id', 'date', 'text']
 
 let DataStudents = [

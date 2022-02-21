@@ -37,6 +37,18 @@ function getStudentsSortedByGroup(descending = false) {
     else return DataStudents.sort((s1, s2) => s1.group - s2.group);
 }
 
+//---Companies----
+
+function getCompaniesSortedById(descending = false) {
+    if (descending) return DataCompanies.sort((c1, c2) => c2.id - c1.id);
+    else return DataCompanies.sort((c1, c2) => c1.id - c2.id);
+}
+
+function getCompaniesSortedByName(descending = false) {
+    if (descending) return DataCompanies.sort((c1, c2) => descendingTextSort(c1.name, c2.name));
+    else return DataCompanies.sort((c1, c2) => ascendingTextSort(c1.name, c2.name));
+}
+
 //---Events----
 
 function getEventsSortedById(descending = false) {

@@ -17,7 +17,7 @@ class ToolsPanel extends React.Component {
                         <button className='tools-button' onClick={() => this.changeForm('ADD')}><i className='fa fa-plus-circle icon'/></button>
                         <button className='tools-button' onClick={() => this.changeForm('DEL')}><i className='fa fa-minus-circle icon'/></button>
                         <button className='tools-button' onClick={() => this.changeForm('EDT')}><i className='fa fa-refresh icon'/></button>
-                        <button className='tools-button' onClick={() => this.changeForm('NIL')}><i className='fa fa-arrow-right icon'/></button>
+                        <button className='tools-button' onClick={() => this.changeForm('NIL')}><i className='fa fa-forward icon'/></button>
                     </div>
         }
         
