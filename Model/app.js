@@ -119,6 +119,11 @@ class App extends React.Component {
         this.setState(this.state);
     }
 
+    rederInfoPanel() {
+        if (this.state.category != 'EV')
+            return <InfoPanel category={this.state.category} selectedElement={this.state.selectedElement}/>
+    }
+
     render() {
         return <div id='subroot'>
                     <NavigationPanel category={this.state.category} onClickHandler={this.onNavigationSelected}/>
@@ -126,7 +131,7 @@ class App extends React.Component {
                         <ControlPanel category={this.state.category} selectedElement={this.state.selectedElement} 
                             onAddHandler={this.onAddElement} onDeleteHandler={this.onDeleteElement}
                             onEditHandler={this.onEditElement} onClickHandler={this.onListElementSelected}/>
-                        <InfoPanel category={this.state.category} selectedElement={this.state.selectedElement}/>
+                            {this.rederInfoPanel()}
                     </div>
                 </div>
     };

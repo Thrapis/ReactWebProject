@@ -41,3 +41,17 @@ function getExtendedEvents(events) {
     if (events.length > 0) return events.map(e => getExtendedEvent(e));
     else return [];
 }
+
+//----------------------------------
+
+function getStudentsByNamePattern(students, pattern) {
+    return students.filter(s => s.name.toLowerCase().includes(pattern.toLowerCase()));
+}
+
+function getCompaniesByNamePattern(companies, pattern) {
+    return companies.filter(c => c.name.toLowerCase().includes(pattern.toLowerCase()));
+}
+
+function getEventsByTextPattern(events, pattern) {
+    return events.filter(e => e.text.toLowerCase().includes(pattern.toLowerCase()));
+}

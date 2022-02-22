@@ -23,6 +23,7 @@ class StudentList extends React.Component {
             case 'group': this.data = getStudentsSortedByGroup(this.state.direction == 'DESC'); break;
             case 'syear': this.data = getStudentsSortedBySYear(this.state.direction == 'DESC'); break;
         }
+        this.data = getStudentsByNamePattern(this.data, this.props.pattern);
 
         return <div className="scroll-container" id="scrollContainer">
                     <div className='scroll-sort-box'>

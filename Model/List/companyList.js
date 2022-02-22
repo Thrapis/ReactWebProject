@@ -20,6 +20,7 @@ class CompanyList extends React.Component {
             case 'id': this.data = getCompaniesSortedById(this.state.direction == 'DESC'); break;
             case 'name': this.data = getCompaniesSortedByName(this.state.direction == 'DESC'); break;
         }
+        this.data = getCompaniesByNamePattern(this.data, this.props.pattern);
 
         return <div className="scroll-container" id="scrollContainer">
                     <div className='scroll-sort-box'>
@@ -34,7 +35,7 @@ class CompanyList extends React.Component {
                             <option value='DESC'>Descending</option>
                         </select>
                     </div>
-                    {DataCompanies.map((company, i)  => { 
+                    {this.data.map((company, i)  => { 
                         let selected = this.props.selectedElement.company == company.id;
                         return <button className={selected ? 'scroll-element-selected' : 'scroll-element'}
                                      data={company['id']} key={i} onClick={this.props.onClickHandler}>

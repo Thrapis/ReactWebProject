@@ -30,13 +30,13 @@ class ToolsPanel extends React.Component {
                         <button className='tools-button' onClick={() => this.changeForm('ADD')}><i className='fa fa-plus-circle icon'/></button>
                         <button className='tools-button' onClick={() => this.changeForm('DEL')}><i className='fa fa-minus-circle icon'/></button>
                         <button className='tools-button' onClick={() => this.changeForm('EDT')}><i className='fa fa-refresh icon'/></button>
-                        <button className='tools-button' onClick={() => this.changeForm('NIL')}><i className='fa fa-forward icon'/></button>
+                        <button className='tools-button' onClick={() => this.changeForm('SCH')}><i className='fa fa-forward icon'/></button>
                     </div>
             }
             else {
                 return <div className='tools-buttons-container'>
-                        <button className='tools-button-wide' onClick={() => this.changeForm('ADD')}><i className='fa fa-plus-circle icon'/></button>
-                        <button className='tools-button-wide' onClick={() => this.changeForm('NIL')}><i className='fa fa-forward icon'/></button>
+                        <button className='tools-button' onClick={() => this.changeForm('ADD')}><i className='fa fa-plus-circle icon'/></button>
+                        <button className='tools-button' onClick={() => this.changeForm('SCH')}><i className='fa fa-forward icon'/></button>
                     </div>
             }
         }
@@ -54,6 +54,10 @@ class ToolsPanel extends React.Component {
         else if (this.state.form == 'EDT' && this.selected) {
             return <EditForm category={this.props.category} selectedElement={this.props.selectedElement}
                                     editHandler={this.props.onEditHandler} cancelHandler={() => this.changeForm('NIL')}/>
+        }
+        else if (this.state.form == 'SCH') {
+            return <SearchForm  category={this.props.category} onChangeHandler={this.props.onFilterHandler}
+                         cancelHandler={() => { this.changeForm('NIL');}} pattern={this.props.pattern}/>
         }
     }
     
